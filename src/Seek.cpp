@@ -26,6 +26,12 @@ Vector2D Seek::CalculateSteeringForce(Agent *agent)
 	
 	//ARRIVE
 	Vector2D distanceToTarget = (agent->getTarget() - agent->getPosition());
+
+	//PREDICTED
+	/*float T = distanceToTarget.Length() / agent->getVelocity().Length();
+	Vector2D PredictedTarget = (agent->getTarget() + agent->getVelocityTarget()) * T;
+	std::cout << PredictedTarget.x << " " << PredictedTarget.y << std::endl;*/
+
 	if (distanceToTarget.Length() > agent->getSlowingRadius())
 	{
 		DesiredVelocity *= agent->getMaxVelocity();	

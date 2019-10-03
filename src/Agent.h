@@ -24,6 +24,7 @@ private:
 	Vector2D velocity;
 	Vector2D target;
 	Vector2D acceleration;
+	Vector2D velocityTarget;
 
 	float mass;  //change to mass
 	float orientation;
@@ -46,6 +47,7 @@ public:
 	Vector2D getTarget();
 	Vector2D getVelocity();
 	Vector2D getAcceleration();
+	Vector2D getVelocityTarget();
 
 	float getMaxVelocity();
 	float getMaxForce();
