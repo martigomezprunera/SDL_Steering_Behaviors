@@ -61,11 +61,14 @@ public:
 	void setPosition(Vector2D position);
 	void setTarget(Vector2D target);
 	void setVelocity(Vector2D velocity);
+	void setTargetVelocity(Vector2D NewvelocityTarget);
 	void setAcceleration(Vector2D NewAcceleration);
+	void setMass(float NewMass);
 	void update(float dtime, SDL_Event *event);
 	void draw();
 
+	//PREDICTED TARGET
+	Vector2D predictedPosition(Agent* seguidor, Agent* perseguido);
 
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
-	
 };

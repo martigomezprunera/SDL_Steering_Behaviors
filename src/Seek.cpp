@@ -14,7 +14,7 @@ void Seek::applySteeringForce(Agent *agent, float dtime)
 	agent->setAcceleration(SteeringForce / agent->getMass());
 	agent->setVelocity(agent->getVelocity() + agent->getAcceleration() * dtime);
 	agent->getVelocity().Truncate(agent->getVelocity(), agent->getMaxVelocity());
-	agent->setPosition (agent->getPosition() + agent->getVelocity() * dtime);
+	agent->setPosition(agent->getPosition() + agent->getVelocity() * dtime);
 }
 
 Vector2D Seek::CalculateSteeringForce(Agent *agent)
@@ -28,9 +28,9 @@ Vector2D Seek::CalculateSteeringForce(Agent *agent)
 	Vector2D distanceToTarget = (agent->getTarget() - agent->getPosition());
 
 	//PREDICTED
-	/*float T = distanceToTarget.Length() / agent->getVelocity().Length();
+	//float T = distanceToTarget.Length() / agent->getVelocity().Length();
+	float T = 3;
 	Vector2D PredictedTarget = (agent->getTarget() + agent->getVelocityTarget()) * T;
-	std::cout << PredictedTarget.x << " " << PredictedTarget.y << std::endl;*/
 
 	if (distanceToTarget.Length() > agent->getSlowingRadius())
 	{

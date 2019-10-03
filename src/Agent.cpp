@@ -7,7 +7,7 @@ Agent::Agent() : sprite_texture(0),
 	             target(Vector2D(1000, 100)),
 	             velocity(Vector2D(0,0)),
 				 velocityTarget(Vector2D(0, 0)),
-	             mass(0.5),
+	             //mass(0.5),
 	             max_force(50),
 	             max_velocity(200),
 	             orientation(0),
@@ -94,8 +94,6 @@ Vector2D Agent::getVelocityTarget()
 	return velocityTarget;
 }
 
-
-
 void Agent::setPosition(Vector2D _position)
 {
 	position = _position;
@@ -111,9 +109,19 @@ void Agent::setVelocity(Vector2D _velocity)
 	velocity = _velocity;
 }
 
+void Agent::setTargetVelocity(Vector2D NewvelocityTarget)
+{
+	velocityTarget = NewvelocityTarget;
+}
+
 void Agent::setAcceleration(Vector2D NewAcceleration)
 {
 	acceleration = NewAcceleration;
+}
+
+void Agent::setMass(float NewMass)
+{
+	mass = NewMass;
 }
 
 void Agent::update(float dtime, SDL_Event *event)
@@ -166,6 +174,13 @@ void Agent::draw()
 		draw_circle(TheApp::Instance()->getRenderer(), (int)position.x, (int)position.y, 15, 255, 255, 255, 255);
 		SDL_RenderDrawLine(TheApp::Instance()->getRenderer(), (int)position.x, (int)position.y, (int)(position.x+15*cos(orientation*DEG2RAD)), (int)(position.y+15*sin(orientation*DEG2RAD)));
 	}
+}
+
+Vector2D Agent::predictedPosition(Agent* seguidor, Agent* perseguido)
+{
+	float T = Vector2D::Distance(seguidor->getPosition(), perseguido->getPosition()) / seguidor->getMaxVelocity();
+	Vector2D predictedTarget = perseguido->getPosition() + perseguido->getVelocity() * T;
+	return predictedTarget;
 }
 
 bool Agent::loadSpriteTexture(char* filename, int _num_frames)
