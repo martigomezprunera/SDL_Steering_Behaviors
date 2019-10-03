@@ -30,6 +30,7 @@ private:
 	float max_force;
 	float max_velocity;
 	float slowingRadius;
+	float ExtremeSlowingRadius;
 	float factor;
 
 	SDL_Texture *sprite_texture;
@@ -51,6 +52,8 @@ public:
 	float getMass();
 	float getSlowingRadius();
 	float getFactor();
+	float getExtremeSlowingRadius();
+
 	void setFactor(float newFactor);
 	void setBehavior(SteeringBehavior *behavior);
 	void setPosition(Vector2D position);
@@ -59,6 +62,8 @@ public:
 	void setAcceleration(Vector2D NewAcceleration);
 	void update(float dtime, SDL_Event *event);
 	void draw();
+
+
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
 	
 };

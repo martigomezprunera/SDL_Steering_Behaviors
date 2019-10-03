@@ -15,6 +15,7 @@ Agent::Agent() : sprite_texture(0),
 	             sprite_h(0),
 	             draw_sprite(false),
 				 slowingRadius(200),
+				 ExtremeSlowingRadius(50),
 				 factor(100)
 {
 }
@@ -70,6 +71,11 @@ float Agent::getSlowingRadius()
 float Agent::getFactor()
 {
 	return factor;
+}
+
+float Agent::getExtremeSlowingRadius()
+{
+	return ExtremeSlowingRadius;
 }
 
 void Agent::setFactor(float newFactor)

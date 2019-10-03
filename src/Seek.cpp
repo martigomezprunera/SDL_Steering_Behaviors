@@ -22,19 +22,28 @@ Vector2D Seek::CalculateSteeringForce(Agent *agent)
 
 	Vector2D DesiredVelocity = agent->getTarget() - agent->getPosition();
 	DesiredVelocity.Normalize();
+	Vector2D SteeringForce;
 	
-
+	//ARRIVE
 	Vector2D distanceToTarget = (agent->getTarget() - agent->getPosition());
 	if (distanceToTarget.Length() > agent->getSlowingRadius())
 	{
-		DesiredVelocity *= agent->getMaxVelocity();		
+		DesiredVelocity *= agent->getMaxVelocity();	
+		SteeringForce = (DesiredVelocity - agent->getVelocity());
 	}
 	else
 	{
-		agent->setFactor(distanceToTarget.Length()/agent->getSlowingRadius());
-		Vector2D SteeringForce = (DesiredVelocity - agent->getVelocity()*agent->getFactor());
+		if (distanceToTarget.Length() <= agent->getExtremeSlowingRadius())
+		{
+			agent->setFactor(distanceToTarget.Length() / agent->getExtremeSlowingRadius() + 5);
+		}
+		else
+		{
+			agent->setFactor(distanceToTarget.Length() / agent->getSlowingRadius());
+		}
+		SteeringForce = (DesiredVelocity - agent->getVelocity()*agent->getFactor());
 	}
-	Vector2D SteeringForce = (DesiredVelocity - agent->getVelocity());
+
 	SteeringForce /= agent->getMaxVelocity();
 	return SteeringForce * agent->getMaxForce();
 }
