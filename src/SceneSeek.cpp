@@ -83,6 +83,11 @@ void SceneSeek::update(float dtime, SDL_Event *event)
 		targetRandom.x = target.x + (targetVelocity.x * (60 + 25));
 		targetRandom.y = target.y + (targetVelocity.y * (60 + 25));
 	}
+	else
+	{
+		targetRandom.x = target.x + (targetVelocity.x * (60 + 35));
+		targetRandom.y = target.y + (targetVelocity.y * (60 + 35));
+	}
 	counterFrames++;
 
 	if (counterFrames == 1000)
