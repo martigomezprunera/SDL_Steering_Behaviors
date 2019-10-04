@@ -141,6 +141,7 @@
     <ClCompile Include="..\src\SDL_SimpleApp.cpp" />
     <ClCompile Include="..\src\Seek.cpp" />
     <ClCompile Include="..\src\utils .cpp" />
+    <ClCompile Include="..\src\Wander.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Agent.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\src\SDL_SimpleApp.h" />
     <ClInclude Include="..\src\Seek.h" />
     <ClInclude Include="..\src\Vector2D.h" />
+    <ClInclude Include="..\src\Wander.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\res\spritesheet.png" />

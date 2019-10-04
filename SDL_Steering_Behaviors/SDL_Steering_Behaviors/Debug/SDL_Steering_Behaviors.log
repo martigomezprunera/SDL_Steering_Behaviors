@@ -1,2 +1,4 @@
-﻿  SceneFlee.cpp
+﻿  Wander.cpp
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Wander.cpp(26,8): warning C4101: 'TargetAngle': variable local sin referencia
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Wander.cpp(71,31): warning C4244: 'return': conversión de 'int' a 'float'; posible pérdida de datos
   SDL_Steering_Behaviors.vcxproj -> C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe
