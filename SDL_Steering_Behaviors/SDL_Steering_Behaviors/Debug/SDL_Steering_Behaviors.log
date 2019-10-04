@@ -1,5 +1,2 @@
-﻿  Agent.cpp
-  SceneSeek.cpp
-  Generando código...
-C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\SceneSeek.cpp(24,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+﻿  SceneFlee.cpp
   SDL_Steering_Behaviors.vcxproj -> C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe

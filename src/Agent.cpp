@@ -183,6 +183,13 @@ Vector2D Agent::predictedPosition(Agent* seguidor, Agent* perseguido)
 	return predictedTarget;
 }
 
+Vector2D Agent::predictedPositionEvade(Agent* seguidor, Agent* perseguido)
+{
+	float T = Vector2D::Distance(seguidor->getPosition(), perseguido->getPosition()) / seguidor->getMaxVelocity();
+	Vector2D predictedTarget = perseguido->getPosition() + perseguido->getVelocity() * T;
+	return predictedTarget;
+}
+
 bool Agent::loadSpriteTexture(char* filename, int _num_frames)
 {
 	if (_num_frames < 1) return false;

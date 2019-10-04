@@ -24,9 +24,7 @@ Vector2D Pursue::CalculateSteeringForce(Agent* agent)
 	DesiredVelocity.Normalize();
 	Vector2D SteeringForce;
 
-	//ARRIVE
 	Vector2D distanceToTarget = (agent->getTarget() - agent->getPosition());
-
 	DesiredVelocity *= agent->getMaxVelocity();
 	SteeringForce = (DesiredVelocity - agent->getVelocity());
 	SteeringForce /= agent->getMaxVelocity();

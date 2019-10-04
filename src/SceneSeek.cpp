@@ -21,7 +21,7 @@ SceneSeek::SceneSeek()
 	agent1->setPosition(Vector2D(220, 500));
 	agent1->setTarget(Vector2D(640, 360));
 	agent1->setVelocity(Vector2D(1, 1));
-	agent1->setMass(0.2);
+	agent1->setMass(0.5);
 	agent1->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent1);
 	target = Vector2D(640, 360);

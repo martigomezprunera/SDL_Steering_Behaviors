@@ -21,8 +21,11 @@ Vector2D Flee::CalculateSteeringForce(Agent * agent)
 {
 	Vector2D DesiredVelocity = agent->getPosition() - agent->getTarget();
 	DesiredVelocity.Normalize();
+	Vector2D SteeringForce;
+
+	Vector2D distanceToTarget = (agent->getTarget() - agent->getPosition());
 	DesiredVelocity *= agent->getMaxVelocity();
-	Vector2D SteeringForce = (DesiredVelocity - agent->getVelocity());
+	SteeringForce = (DesiredVelocity - agent->getVelocity());
 	SteeringForce /= agent->getMaxVelocity();
 	return SteeringForce * agent->getMaxForce();
 }

@@ -70,5 +70,8 @@ public:
 	//PREDICTED TARGET
 	Vector2D predictedPosition(Agent* seguidor, Agent* perseguido);
 
+	//AVOID TARGET
+	Vector2D predictedPositionEvade(Agent* seguidor, Agent* perseguido);
+
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
 };

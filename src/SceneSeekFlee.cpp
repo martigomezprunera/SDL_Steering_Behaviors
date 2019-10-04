@@ -9,12 +9,14 @@ SceneSeekFlee::SceneSeekFlee()
 	Agent *agent = new Agent;
 	agent->setBehavior(new Seek);
 	agent->setTarget(Vector2D(100, 100));
+	agent->setMass(0.5);
 	agent->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(agent);
 	agent = new Agent();
 	agent->setBehavior(new Seek);
 	agent->setPosition(Vector2D(600,50));
 	agent->setTarget(Vector2D(900, 650));
+	agent->setMass(0.5);
 	agent->loadSpriteTexture("../res/soldier.png", 4);
 	agents.push_back(agent); 
 	target = Vector2D(100, 100);
