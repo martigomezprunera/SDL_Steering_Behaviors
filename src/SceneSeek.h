@@ -15,5 +15,15 @@ public:
 private:
 	std::vector<Agent*> agents;
 	Vector2D target;
+
+	Vector2D targetVelocity;
+	float targetAngle;
+	float counterFrames;
+	int velocity;
+	Vector2D targetCircle;
+	Vector2D targetRandom;
+
+	int firstTime;
+
 };
 

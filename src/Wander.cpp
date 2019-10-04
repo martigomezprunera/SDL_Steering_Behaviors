@@ -20,18 +20,7 @@ void Wander::applySteeringForce(Agent* agent, float dtime)
 Vector2D Wander::CalculateSteeringForce(Agent* agent)
 {
 	//CONSTANTS WANDER
-	// Wander Angle
-	float WanderAngle = 0;
-	// Target Angle
-	float TargetAngle;
-	// Maximum Change of Angle in one frame
-	float WanderMaxAngleChange = 35;
-	// Distance from Agent to Wander Circle Center
-	float WanderOffset = 1;
-	// Radius of Wander Circle
-	float WanderRadius = 100;
-	//Circle center
-	Vector2D CircleCenter;
+	
 
 	Vector2D DesiredVelocity = agent->getTarget() - agent->getPosition();
 	DesiredVelocity.Normalize();

@@ -8,12 +8,14 @@
 #include "SceneSeek.h"
 #include "SceneFlee.h"
 #include "SceneSeekFlee.h"
+#include <time.h>
 
 
 using namespace std;
 
 int main(int argc, char ** argv)
 {
+	srand(time(NULL));
 	bool quit = false;
 	SDL_Event event;
 
