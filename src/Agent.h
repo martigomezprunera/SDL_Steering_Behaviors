@@ -6,6 +6,7 @@
 #include "SDL_SimpleApp.h"
 #include "Vector2D.h"
 #include "utils.h"
+#include <vector>
 
 
 class Agent
@@ -34,6 +35,9 @@ private:
 	float ExtremeSlowingRadius;
 	float factor;
 
+	//RADIUS FLOCKING
+	float neighbor_Radius;
+
 	SDL_Texture *sprite_texture;
 	bool draw_sprite;
 	int sprite_num_frames;
@@ -48,6 +52,17 @@ public:
 	Vector2D getVelocity();
 	Vector2D getAcceleration();
 	Vector2D getVelocityTarget();
+
+	//FLOCKING
+	float K_separation_force;
+	float K_cohesion_force;
+	float K_alignment_force;
+
+	//VECTORS FLOCKING
+	Vector2D separationDirection;
+	Vector2D cohesionDirection;
+	Vector2D alignmentDirection;
+	Vector2D Flocking_Force;
 
 	float getMaxVelocity();
 	float getMaxForce();
@@ -72,6 +87,11 @@ public:
 
 	//AVOID TARGET
 	Vector2D predictedPositionEvade(Agent* seguidor, Agent* perseguido);
+
+	//FLOCKING FUNCTIONS
+	Vector2D FleeFlocking(Agent *agent, std::vector<Agent*> ArrayAgents);
+	Vector2D SeekFlocking(Agent* agent, std::vector<Agent*> ArrayAgents);
+	Vector2D FlocAligment(Agent* agent, std::vector<Agent*> ArrayAgents);
 
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
 };

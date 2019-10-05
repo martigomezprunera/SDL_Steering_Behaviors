@@ -3,21 +3,26 @@
 using namespace std;
 
 Agent::Agent() : sprite_texture(0),
-                 position(Vector2D(100, 100)),
-	             target(Vector2D(1000, 100)),
-	             velocity(Vector2D(0,0)),
+				 position(Vector2D(100, 100)),
+				 target(Vector2D(1000, 100)),
+				 velocity(Vector2D(0, 0)),
 				 velocityTarget(Vector2D(0.5, 0.5)),
-	             //mass(0.5),
-	             max_force(50),
-	             max_velocity(200),
-	             orientation(0),
+				 //mass(0.5),
+				 max_force(50),
+				 max_velocity(200),
+				 orientation(0),
 				 sprite_num_frames(0),
-	             sprite_w(0),
-	             sprite_h(0),
-	             draw_sprite(false),
+				 sprite_w(0),
+				 sprite_h(0),
+				 draw_sprite(false),
 				 slowingRadius(200),
 				 ExtremeSlowingRadius(50),
-				 factor(100)
+				 factor(100),
+				 neighbor_Radius(30),
+				 K_separation_force(100),
+				 K_cohesion_force(10),
+				 K_alignment_force(10),
+				 Flocking_Force(0)
 {
 }
 
@@ -188,6 +193,76 @@ Vector2D Agent::predictedPositionEvade(Agent* seguidor, Agent* perseguido)
 	float T = Vector2D::Distance(seguidor->getPosition(), perseguido->getPosition()) / seguidor->getMaxVelocity();
 	Vector2D predictedTarget = perseguido->getPosition() + perseguido->getVelocity() * T;
 	return predictedTarget;
+}
+
+Vector2D Agent::FleeFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
+{
+	float neigborCount = 0;
+	Vector2D separationVector = Vector2D(0, 0);
+	Vector2D separationDirection = Vector2D(0, 0);
+	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+
+	for (int i = 0; i < ArrayAgents.size(); i++)
+	{
+		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		{
+			separationVector += (agent->getPosition() - ArrayAgents[i]->getPosition());
+			++neigborCount;
+		}
+	}
+
+	separationVector /= neigborCount;
+	separationDirection = separationVector.Normalize();
+
+	return separationDirection;
+}
+
+Vector2D Agent::SeekFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
+{
+	float neigborCount = 0;
+	Vector2D averagePosition = Vector2D(0, 0);
+	Vector2D cohesionDirection = Vector2D(0, 0);
+	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+
+	for (int i = 0; i < ArrayAgents.size(); i++)
+	{
+		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		{
+			averagePosition += ArrayAgents[i]->getPosition();
+			++neigborCount;
+		}
+	}
+
+	averagePosition /= neigborCount;
+	averagePosition -= agent->getPosition();
+	cohesionDirection = averagePosition.Normalize();
+
+	return cohesionDirection;
+}
+
+Vector2D Agent::FlocAligment(Agent* agent, std::vector<Agent*> ArrayAgents)
+{
+	float neigborCount = 0;
+	Vector2D averageVelocity = Vector2D(0, 0);
+	Vector2D alignmentDirection = Vector2D(0, 0);
+	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+
+	for (int i = 0; i < ArrayAgents.size(); i++)
+	{
+		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		{
+			averageVelocity += ArrayAgents[i]->getVelocity();
+			++neigborCount;
+		}
+	}
+
+	averageVelocity /= neigborCount;
+	alignmentDirection = averageVelocity.Normalize();
+
+	return alignmentDirection;
 }
 
 bool Agent::loadSpriteTexture(char* filename, int _num_frames)

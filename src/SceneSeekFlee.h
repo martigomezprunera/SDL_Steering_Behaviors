@@ -15,5 +15,7 @@ public:
 private:
 	std::vector<Agent*> agents;
 	Vector2D target;
+	float neighborCount;
+	float neighborRadius;
 };
 
