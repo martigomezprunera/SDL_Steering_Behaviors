@@ -7,7 +7,7 @@ Agent::Agent() : sprite_texture(0),
 				 target(Vector2D(1000, 100)),
 				 velocity(Vector2D(0, 0)),
 				 velocityTarget(Vector2D(0.5, 0.5)),
-				 //mass(0.5),
+				 mass(0.5),
 				 max_force(50),
 				 max_velocity(200),
 				 orientation(0),
@@ -18,11 +18,11 @@ Agent::Agent() : sprite_texture(0),
 				 slowingRadius(200),
 				 ExtremeSlowingRadius(50),
 				 factor(100),
-				 neighbor_Radius(30),
-				 K_separation_force(100),
-				 K_cohesion_force(10),
-				 K_alignment_force(10),
-				 Flocking_Force(0)
+				 neighbor_Radius(50),
+				 K_separation_force(300),
+				 K_cohesion_force(200),
+				 K_alignment_force(1),
+				 Flocking_Force(10)
 {
 }
 
@@ -214,6 +214,8 @@ Vector2D Agent::FleeFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
 
 	separationVector /= neigborCount;
 	separationDirection = separationVector.Normalize();
+
+	//std::cout << "Separation Vector: X " << separationDirection.x << ", Y " << separationDirection.y;
 
 	return separationDirection;
 }
