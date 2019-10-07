@@ -57,6 +57,7 @@ public:
 	float K_separation_force;
 	float K_cohesion_force;
 	float K_alignment_force;
+	float K_flocking_force;
 
 	//VECTORS FLOCKING
 	Vector2D separationDirection;

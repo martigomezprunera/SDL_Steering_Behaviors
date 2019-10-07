@@ -21,7 +21,6 @@ Vector2D Wander::CalculateSteeringForce(Agent* agent)
 {
 	//CONSTANTS WANDER
 	
-
 	Vector2D DesiredVelocity = agent->getTarget() - agent->getPosition();
 	DesiredVelocity.Normalize();
 	Vector2D SteeringForce;

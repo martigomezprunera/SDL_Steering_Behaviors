@@ -8,7 +8,7 @@ using namespace std;
 SceneSeek::SceneSeek()
 {
 	Agent *agent = new Agent;
-	agent->setBehavior(new Wander);
+	agent->setBehavior(new Seek);
 	agent->setPosition(Vector2D(640,360));
 	agent->setTarget(Vector2D(640, 360));
 	agent->setTargetVelocity(Vector2D(10, 10));
@@ -35,6 +35,15 @@ SceneSeek::SceneSeek()
 
 	//TARGET CIRCLE
 	targetCircle = Vector2D(640, 360) + Vector2D(60, 60);
+	Agent* agent3 = new Agent;
+	agent3->setBehavior(new Wander);
+	agent3->setPosition(Vector2D(650, 500));
+	agent3->setTarget(Vector2D(640, 360));
+	agent3->setVelocity(Vector2D(1, 1));
+	agent3->setMass(0.5);
+	agent3->loadSpriteTexture("../res/soldier.png", 4);
+	agents.push_back(agent3);
+	target = Vector2D(640, 360);
 
 	//TARGET RANDOM
 	targetRandom = targetCircle + Vector2D(30, 0);
@@ -122,21 +131,24 @@ void SceneSeek::update(float dtime, SDL_Event *event)
 		target.x = 1280;
 	}
 
-	agents[0]->update(dtime,event);
+	//SETEAMOS COMPORTAMIENTO DEL PERSONAJE QUE REALIZA EL WANDER
+	agents[2]->setPosition(target);
+	agents[2]->setVelocity(targetVelocity);
+
+	agents[0]->update(dtime, event);
 	agents[1]->update(dtime, event);
+	agents[2]->update(dtime, event);
 }
 
 void SceneSeek::draw()
 {
-	draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
+	//draw_circle(TheApp::Instance()->getRenderer(), (int)target.x, (int)target.y, 15, 255, 0, 0, 255);
 	agents[0]->draw();
 	agents[1]->draw();
+	agents[2]->draw();
 
 	//CIRCULO WANDER
 	draw_circle(TheApp::Instance()->getRenderer(), (int)targetCircle.x, (int)targetCircle.y, 40, 255, 255, 0, 255);
-
-	//CIRCULO WANDER
-	draw_circle(TheApp::Instance()->getRenderer(), (int)targetRandom.x, (int)targetRandom.y, 10, 0, 0, 255, 255);
 }
 
 const char* SceneSeek::getTitle()

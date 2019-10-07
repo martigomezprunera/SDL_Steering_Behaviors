@@ -1,5 +1,5 @@
 ﻿  Agent.cpp
-C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(205,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(230,20): warning C4018: '<': no coinciden signed/unsigned
-C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(254,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(206,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(231,20): warning C4018: '<': no coinciden signed/unsigned
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\Agent.cpp(255,20): warning C4018: '<': no coinciden signed/unsigned
   SDL_Steering_Behaviors.vcxproj -> C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe

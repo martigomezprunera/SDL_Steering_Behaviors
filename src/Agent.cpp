@@ -18,11 +18,12 @@ Agent::Agent() : sprite_texture(0),
 				 slowingRadius(200),
 				 ExtremeSlowingRadius(50),
 				 factor(100),
-				 neighbor_Radius(50),
-				 K_separation_force(300),
-				 K_cohesion_force(200),
-				 K_alignment_force(1),
-				 Flocking_Force(10)
+				 neighbor_Radius(200),
+				 K_separation_force(1500),
+				 K_cohesion_force(1000),
+				 K_alignment_force(0.5),
+				 K_flocking_force(50),
+				 Flocking_Force(0)
 {
 }
 

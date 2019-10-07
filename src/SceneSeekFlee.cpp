@@ -46,6 +46,56 @@ SceneSeekFlee::SceneSeekFlee()
 	agent3->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(agent3);
 
+	/*ANOTHER ZOMBIE*/
+	Agent* agent4 = new Agent;
+	agent4->setBehavior(new Flocking);
+	//agent3->setTarget(Vector2D(640, 360));
+	agent4->setPosition(Vector2D(100, 70));
+	agent4->setMass(0.5);
+	agent4->setVelocity(Vector2D(75, 75));
+	agent4->loadSpriteTexture("../res/zombie1.png", 8);
+	agents.push_back(agent4);
+
+	/*ANOTHER ZOMBIE*/
+	Agent* agent5 = new Agent;
+	agent5->setBehavior(new Flocking);
+	//agent3->setTarget(Vector2D(640, 360));
+	agent5->setPosition(Vector2D(350, 100));
+	agent5->setMass(0.5);
+	agent5->setVelocity(Vector2D(20, 100));
+	agent5->loadSpriteTexture("../res/zombie1.png", 8);
+	agents.push_back(agent5);
+
+	/*ANOTHER ZOMBIE*/
+	Agent* agent6 = new Agent;
+	agent6->setBehavior(new Flocking);
+	//agent3->setTarget(Vector2D(640, 360));
+	agent6->setPosition(Vector2D(50, 250));
+	agent6->setMass(0.5);
+	agent6->setVelocity(Vector2D(60, 20));
+	agent6->loadSpriteTexture("../res/zombie1.png", 8);
+	agents.push_back(agent6);
+
+	/*ANOTHER ZOMBIE*/
+	Agent* agent7 = new Agent;
+	agent7->setBehavior(new Flocking);
+	//agent3->setTarget(Vector2D(640, 360));
+	agent7->setPosition(Vector2D(90, 30));
+	agent6->setMass(0.5);
+	agent7->setVelocity(Vector2D(75, -75));
+	agent7->loadSpriteTexture("../res/zombie1.png", 8);
+	agents.push_back(agent7);
+
+	/*ANOTHER ZOMBIE*/
+	Agent* agent8 = new Agent;
+	agent8->setBehavior(new Flocking);
+	//agent3->setTarget(Vector2D(640, 360));
+	agent8->setPosition(Vector2D(640, 70));
+	agent8->setMass(0.5);
+	agent8->setVelocity(Vector2D(-75, 75));
+	agent8->loadSpriteTexture("../res/zombie1.png", 8);
+	agents.push_back(agent8);
+
 	//SOLDIERS
 	/*agent = new Agent();
 	agent->setBehavior(new Seek);
@@ -57,8 +107,8 @@ SceneSeekFlee::SceneSeekFlee()
 	target = Vector2D(100, 100);*/
 
 	//FLOKING
-	neighborCount = 0;
-	neighborRadius = 60;
+	/*neighborCount = 0;
+	neighborRadius = 200;*/
 }
 
 SceneSeekFlee::~SceneSeekFlee()
