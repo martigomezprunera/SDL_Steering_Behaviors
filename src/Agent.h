@@ -27,6 +27,7 @@ private:
 	Vector2D acceleration;
 	Vector2D velocityTarget;
 
+	int id;
 	float mass;  //change to mass
 	float orientation;
 	float max_force;
@@ -93,6 +94,8 @@ public:
 	Vector2D FleeFlocking(Agent *agent, std::vector<Agent*> ArrayAgents);
 	Vector2D SeekFlocking(Agent* agent, std::vector<Agent*> ArrayAgents);
 	Vector2D FlocAligment(Agent* agent, std::vector<Agent*> ArrayAgents);
+
+	void SetId(int newID);
 
 	bool Agent::loadSpriteTexture(char* filename, int num_frames=1);
 };

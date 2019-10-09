@@ -9,6 +9,7 @@ SceneSeekFlee::SceneSeekFlee()
 {
 	Agent *agent = new Agent;
 	agent->setBehavior(new Flocking);
+	agent->SetId(0);
 	agent->setPosition(Vector2D(900, 50));
 	//agent->setTarget(Vector2D(640, 360));
 	agent->setMass(0.5);
@@ -19,6 +20,7 @@ SceneSeekFlee::SceneSeekFlee()
 	//NEW ZOMBIES
 	Agent* agent1 = new Agent;
 	agent1->setBehavior(new Flocking);
+	agent1->SetId(1);
 	agent1->setPosition(Vector2D(140, 600));
 	//agent1->setTarget(Vector2D(640, 360));
 	agent1->setMass(0.5);
@@ -29,6 +31,7 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent2 = new Agent;
 	agent2->setBehavior(new Flocking);
+	agent2->SetId(2);
 	agent2->setPosition(Vector2D(200, 60));
 	//agent2->setTarget(Vector2D(640, 360));
 	agent2->setMass(0.5);
@@ -39,6 +42,7 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent3 = new Agent;
 	agent3->setBehavior(new Flocking);
+	agent3->SetId(3);
 	//agent3->setTarget(Vector2D(640, 360));
 	agent3->setPosition(Vector2D(100, 70));
 	agent3->setMass(0.5);
@@ -49,6 +53,7 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent4 = new Agent;
 	agent4->setBehavior(new Flocking);
+	agent4->SetId(4);
 	//agent3->setTarget(Vector2D(640, 360));
 	agent4->setPosition(Vector2D(100, 70));
 	agent4->setMass(0.5);
@@ -59,6 +64,7 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent5 = new Agent;
 	agent5->setBehavior(new Flocking);
+	agent5->SetId(5);
 	//agent3->setTarget(Vector2D(640, 360));
 	agent5->setPosition(Vector2D(350, 100));
 	agent5->setMass(0.5);
@@ -69,6 +75,7 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent6 = new Agent;
 	agent6->setBehavior(new Flocking);
+	agent6->SetId(6);
 	//agent3->setTarget(Vector2D(640, 360));
 	agent6->setPosition(Vector2D(50, 250));
 	agent6->setMass(0.5);
@@ -79,22 +86,13 @@ SceneSeekFlee::SceneSeekFlee()
 	/*ANOTHER ZOMBIE*/
 	Agent* agent7 = new Agent;
 	agent7->setBehavior(new Flocking);
+	agent7->SetId(7);
 	//agent3->setTarget(Vector2D(640, 360));
 	agent7->setPosition(Vector2D(90, 30));
 	agent6->setMass(0.5);
 	agent7->setVelocity(Vector2D(75, -75));
 	agent7->loadSpriteTexture("../res/zombie1.png", 8);
 	agents.push_back(agent7);
-
-	/*ANOTHER ZOMBIE*/
-	Agent* agent8 = new Agent;
-	agent8->setBehavior(new Flocking);
-	//agent3->setTarget(Vector2D(640, 360));
-	agent8->setPosition(Vector2D(640, 70));
-	agent8->setMass(0.5);
-	agent8->setVelocity(Vector2D(-75, 75));
-	agent8->loadSpriteTexture("../res/zombie1.png", 8);
-	agents.push_back(agent8);
 
 	//SOLDIERS
 	/*agent = new Agent();
@@ -121,6 +119,10 @@ SceneSeekFlee::~SceneSeekFlee()
 
 void SceneSeekFlee::update(float dtime, SDL_Event *event)
 {
+	float K_separation_force = 1200.f;
+	float K_cohesion_force = 1400.f;
+	float K_alignment_force = 0.8;
+
 	/* Keyboard & Mouse events */
 	switch (event->type) {
 	case SDL_MOUSEMOTION:
@@ -142,9 +144,9 @@ void SceneSeekFlee::update(float dtime, SDL_Event *event)
 		agents[i]->cohesionDirection = agents[i]->SeekFlocking(agents[i], agents);
 		agents[i]->alignmentDirection = agents[i]->FlocAligment(agents[i], agents);
 
-		agents[i]->Flocking_Force = agents[i]->separationDirection * agents[i]->K_separation_force +
-									agents[i]->cohesionDirection * agents[i]->K_cohesion_force +
-									agents[i]->alignmentDirection * agents[i]->K_alignment_force;
+		agents[i]->Flocking_Force = agents[i]->separationDirection * K_separation_force +
+									agents[i]->cohesionDirection * K_cohesion_force +
+									agents[i]->alignmentDirection * K_alignment_force;
 
 		agents[i]->update(dtime, event);
 	}

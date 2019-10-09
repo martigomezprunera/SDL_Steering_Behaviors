@@ -7,7 +7,7 @@ Agent::Agent() : sprite_texture(0),
 				 target(Vector2D(1000, 100)),
 				 velocity(Vector2D(0, 0)),
 				 velocityTarget(Vector2D(0.5, 0.5)),
-				 mass(0.5),
+				 mass(0.3),
 				 max_force(50),
 				 max_velocity(200),
 				 orientation(0),
@@ -18,10 +18,7 @@ Agent::Agent() : sprite_texture(0),
 				 slowingRadius(200),
 				 ExtremeSlowingRadius(50),
 				 factor(100),
-				 neighbor_Radius(200),
-				 K_separation_force(1500),
-				 K_cohesion_force(1000),
-				 K_alignment_force(0.5),
+				 neighbor_Radius(100),
 				 K_flocking_force(50),
 				 Flocking_Force(0)
 {
@@ -198,23 +195,30 @@ Vector2D Agent::predictedPositionEvade(Agent* seguidor, Agent* perseguido)
 
 Vector2D Agent::FleeFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
 {
-	float neigborCount = 0;
+	int neigborCount = 0;
 	Vector2D separationVector = Vector2D(0, 0);
 	Vector2D separationDirection = Vector2D(0, 0);
 	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+	float distance;
 
 	for (int i = 0; i < ArrayAgents.size(); i++)
 	{
-		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
-		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		if (ArrayAgents[i]->id != agent->id)
 		{
-			separationVector += (agent->getPosition() - ArrayAgents[i]->getPosition());
-			++neigborCount;
+			distance = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+			if (distance < neighbor_Radius)
+			{
+				separationVector += (agent->getPosition() - ArrayAgents[i]->getPosition());
+				++neigborCount;
+			}
 		}
 	}
 
-	separationVector /= neigborCount;
-	separationDirection = separationVector.Normalize();
+	if (neigborCount > 0)
+	{
+		separationVector /= neigborCount;
+		separationDirection = separationVector.Normalize();
+	}
 
 	//std::cout << "Separation Vector: X " << separationDirection.x << ", Y " << separationDirection.y;
 
@@ -223,49 +227,68 @@ Vector2D Agent::FleeFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
 
 Vector2D Agent::SeekFlocking(Agent* agent, std::vector<Agent*> ArrayAgents)
 {
-	float neigborCount = 0;
+	int neigborCount = 0;
 	Vector2D averagePosition = Vector2D(0, 0);
 	Vector2D cohesionDirection = Vector2D(0, 0);
 	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+	float distance = 0;
 
 	for (int i = 0; i < ArrayAgents.size(); i++)
 	{
-		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
-		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		if (ArrayAgents[i]->id != agent->id)
 		{
-			averagePosition += ArrayAgents[i]->getPosition();
-			++neigborCount;
+			distance = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+			if (distance < neighbor_Radius)
+			{
+				averagePosition += ArrayAgents[i]->getPosition();
+				++neigborCount;
+			}
 		}
 	}
 
-	averagePosition /= neigborCount;
-	averagePosition -= agent->getPosition();
-	cohesionDirection = averagePosition.Normalize();
+	if (neigborCount > 0)
+	{
+		averagePosition /= neigborCount;
+		averagePosition -= agent->getPosition();
+		cohesionDirection = averagePosition.Normalize();
+	}
 
 	return cohesionDirection;
 }
 
 Vector2D Agent::FlocAligment(Agent* agent, std::vector<Agent*> ArrayAgents)
 {
-	float neigborCount = 0;
+	int neigborCount = 0;
 	Vector2D averageVelocity = Vector2D(0, 0);
 	Vector2D alignmentDirection = Vector2D(0, 0);
 	Vector2D distanceBetweenVectors = Vector2D(0, 0);
+	float distance = 0;
 
 	for (int i = 0; i < ArrayAgents.size(); i++)
 	{
-		distanceBetweenVectors = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
-		if (distanceBetweenVectors.Length() < neighbor_Radius)
+		if (ArrayAgents[i]->id != agent->id)
 		{
-			averageVelocity += ArrayAgents[i]->getVelocity();
-			++neigborCount;
+			distance = distanceBetweenVectors.Distance(ArrayAgents[i]->getPosition(), agent->getPosition());
+			if (distance < neighbor_Radius)
+			{
+				averageVelocity += ArrayAgents[i]->getVelocity();
+				++neigborCount;
+			}
 		}
 	}
 
-	averageVelocity /= neigborCount;
-	alignmentDirection = averageVelocity.Normalize();
+	if (neigborCount > 0)
+	{
+		averageVelocity /= neigborCount;
+		alignmentDirection = averageVelocity.Normalize();
+	}
 
 	return alignmentDirection;
+}
+
+void Agent::SetId(int newID)
+{
+	id = newID;
 }
 
 bool Agent::loadSpriteTexture(char* filename, int _num_frames)
