@@ -8,6 +8,7 @@
 #include "SceneSeek.h"
 #include "SceneFlee.h"
 #include "SceneSeekFlee.h"
+#include "ScenePath.h"
 #include <time.h>
 
 
@@ -49,6 +50,12 @@ int main(int argc, char ** argv)
 			{
 				delete(curr_scene);
 				curr_scene = new SceneSeekFlee;
+				app->setWindowTitle(curr_scene->getTitle());
+			}
+			if (event.key.keysym.scancode == SDL_SCANCODE_4)
+			{
+				delete(curr_scene);
+				curr_scene = new ScenePath;
 				app->setWindowTitle(curr_scene->getTitle());
 			}
 			if ((event.key.keysym.scancode == SDL_SCANCODE_Q) || (event.key.keysym.scancode == SDL_SCANCODE_ESCAPE))

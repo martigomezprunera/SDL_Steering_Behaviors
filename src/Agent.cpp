@@ -82,6 +82,11 @@ float Agent::getExtremeSlowingRadius()
 	return ExtremeSlowingRadius;
 }
 
+int Agent::getId()
+{
+	return id;
+}
+
 void Agent::setFactor(float newFactor)
 {
 	factor = newFactor;

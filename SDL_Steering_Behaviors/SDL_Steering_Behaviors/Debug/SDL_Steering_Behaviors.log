@@ -1,3 +1,14 @@
-﻿  SceneSeekFlee.cpp
-C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\SceneSeekFlee.cpp(124,31): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+﻿  ScenePath.cpp
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(64,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(64,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(65,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(65,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(66,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(66,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(67,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(67,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(68,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(68,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(69,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\src\ScenePath.cpp(69,56): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   SDL_Steering_Behaviors.vcxproj -> C:\Users\magop\Desktop\IA\SDL_Steering_Behaviors\\bin\SDL_Steering_Behaviors.exe

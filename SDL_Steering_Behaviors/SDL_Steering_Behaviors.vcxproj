@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -137,6 +137,7 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Pursue.cpp" />
     <ClCompile Include="..\src\SceneFlee.cpp" />
+    <ClCompile Include="..\src\ScenePath.cpp" />
     <ClCompile Include="..\src\SceneSeekFlee.cpp" />
     <ClCompile Include="..\src\SceneSeek.cpp" />
     <ClCompile Include="..\src\SDL_SimpleApp.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="..\src\Flee.h" />
     <ClInclude Include="..\src\Flocking.h" />
     <ClInclude Include="..\src\Pursue.h" />
+    <ClInclude Include="..\src\ScenePath.h" />
     <ClInclude Include="..\src\utils.h" />
     <ClInclude Include="..\src\Scene.h" />
     <ClInclude Include="..\src\SceneFlee.h" />

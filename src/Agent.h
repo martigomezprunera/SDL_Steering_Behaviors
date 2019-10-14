@@ -19,6 +19,9 @@ public:
 		virtual ~SteeringBehavior() {};
 		virtual void applySteeringForce(Agent *agent, float dtime) {};
 	};
+
+	int indexCurrentAgent;
+
 private:
 	SteeringBehavior *steering_behaviour;
 	Vector2D position;
@@ -72,6 +75,7 @@ public:
 	float getSlowingRadius();
 	float getFactor();
 	float getExtremeSlowingRadius();
+	int getId();
 
 	void setFactor(float newFactor);
 	void setBehavior(SteeringBehavior *behavior);

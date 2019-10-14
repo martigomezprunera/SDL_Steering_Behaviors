@@ -7,6 +7,9 @@ using namespace std;
 
 SceneSeekFlee::SceneSeekFlee()
 {
+	neighborCount = 0.f;
+	neighborRadius = 0.f;
+
 	Agent *agent = new Agent;
 	agent->setBehavior(new Flocking);
 	agent->SetId(0);
@@ -120,8 +123,8 @@ SceneSeekFlee::~SceneSeekFlee()
 void SceneSeekFlee::update(float dtime, SDL_Event *event)
 {
 	float K_separation_force = 1200.f;
-	float K_cohesion_force = 1400.f;
-	float K_alignment_force = 0.8;
+	float K_cohesion_force = 2000.f;
+	float K_alignment_force = 0.5;
 
 	/* Keyboard & Mouse events */
 	switch (event->type) {
